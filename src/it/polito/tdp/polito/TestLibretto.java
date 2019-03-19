@@ -27,7 +27,7 @@ public class TestLibretto {
 		System.out.println(a2);
 		Voto giusti= new Voto(22, "geo", LocalDate.now());
 		Voto sbagliato = new Voto(22, "geo", LocalDate.now());
-		Voto mancante = new Voto(22, "merendine", LocalDate.now());
+		
 		
 		
 		
