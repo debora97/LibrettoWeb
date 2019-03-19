@@ -3,20 +3,21 @@ package it.polito.tdp.polito;
 import java.time.LocalDate;
 
 public class Voto {
-	private int voto;
+	private int punti;
 	private String corso;
 	private LocalDate data;
+	
 	public Voto(int voto, String corso, LocalDate data) {
 		super();
-		this.voto = voto;
+		this.punti = voto;
 		this.corso = corso;
 		this.data = data;
 	}
-	public int getVoto() {
-		return voto;
+	public int getPunti() {
+		return punti;
 	}
-	public void setVoto(int voto) {
-		this.voto = voto;
+	public void setPunti(int voto) {
+		this.punti = voto;
 	}
 	public String getCorso() {
 		return corso;
@@ -30,6 +31,38 @@ public class Voto {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+	@Override
+	public String toString() {
+		return String.format("Voto [voto=%s, corso=%s, data=%s]", punti, corso, data);
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((corso == null) ? 0 : corso.hashCode());
+		return result;
+	}
+	
+	// sono fatti vari controlli prima di fare equals 
+	// usiamo una delega equals di corso richiama equals di String 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voto other = (Voto) obj;
+		if (corso == null) {
+			if (other.corso != null)
+				return false;
+		} else if (!corso.equals(other.corso)) //equals 
+			return false;
+		return true;
+	}
+	
+	
 	
 	
 
