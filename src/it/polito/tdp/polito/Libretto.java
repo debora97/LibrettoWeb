@@ -103,5 +103,43 @@ public class Libretto {
 		}
 
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("Libretto [voti=%s]", voti);
+	}
+
+	public Libretto librettoMigliorato() {
+		Libretto nuovo= new Libretto();
+		for(Voto v: this.voti) {
+			nuovo.add(v.clone()); // (ricordati di fare il new altrimenti modifica anche gli attributi di  voti di v)
+		}
+		for(Voto v: nuovo.voti) {
+			int punti= (v.getPunti());
+			if(punti<24) {
+				punti+=1;
+			}else if(punti<=28)
+				punti=punti+2;
+			v.setPunti(punti);
+		}
+		return nuovo;
+	}
+	
+	public void cancellaVotiScarsi() {
+		
+		List<Voto> cancellare=new ArrayList<Voto>();
+		for(Voto v: this.voti) {
+			if(v.getPunti()<24) {
+			cancellare.add(v);
+			}
+		}
+		this.voti.removeAll(cancellare);
+		//questa cosa non si fa perchè mentre scorro una lista non posso modificare gli elementi
+		/*for(Voto v: this.voti) {
+			if(v.getPunti()<24) {
+				this.voti.remove(v);
+			}
+		}*/
+	}
 
 }

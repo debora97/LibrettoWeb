@@ -61,7 +61,9 @@ public class Voto {
 			return false;
 		return true;
 	}
-	
+	public Voto clone() {
+		return new Voto(this.punti, this.corso, this.data);
+	}
 	
 	
 	

@@ -27,10 +27,15 @@ public class TestLibretto {
 		System.out.println(a2);
 		Voto giusti= new Voto(22, "geo", LocalDate.now());
 		Voto sbagliato = new Voto(22, "geo", LocalDate.now());
+		System.out.println(libr.toString());
+		System.out.println("**migliorato**");
+		Libretto migliore= libr.librettoMigliorato();
+		System.out.println(libr.toString());
+		System.out.println(migliore.toString());
 		
-		
-		
-		
+		migliore.cancellaVotiScarsi();
+		System.out.println(migliore.toString());
+
 
 	}
 
