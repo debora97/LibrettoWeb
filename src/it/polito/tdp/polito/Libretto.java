@@ -45,12 +45,13 @@ public class Libretto {
 	 * @return il {@link Voto} 
 	 */
 	public Voto cercaNomeEsame(String nomeEsame) {
-		for(Voto v: this.voti) {
-			if(v.getCorso().equals(nomeEsame)) {
-				return v;
-			}
-		}
-		return null;
+		Voto voto=new Voto(0,nomeEsame, null);
+		
+		int pos =this.voti.indexOf(voto);
+		if(pos==-1) {
+			return null;
+		}else 
+		return this.voti.get(pos);
 	}
 	/**
 	 * dato un {@link voto } determina se esiste già un voto con 
@@ -60,13 +61,14 @@ public class Libretto {
 	 *         {@code false } se non li ha trovati
 	 */
 	public boolean esisteGiaVoto(Voto v) {
-		Voto trovato=this.cercaNomeEsame(v.getCorso());
-		if(trovato==null) {
-			return false;
-		} 
-		if(trovato.getPunti()==v.getPunti()){
-			return true ;
-			} else return false;
+		int pos=this.voti.indexOf(v);
+		if(pos==-1)return false;
+		else {
+			return(v.getPunti()==this.voti.get(pos).getPunti()); //senza fare if else basta tornare quello che mi dice lui 
+				
+		}
+		
+		
 		
 	}
 
